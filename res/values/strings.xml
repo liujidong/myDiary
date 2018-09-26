@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">我的日志</string>
+    <string name="menu_insert">添加日记</string>
+    <string name="menu_delete">删除日记</string>
+    <string name="title">标题</string>
+    <string name="body">内容</string>
+    <string name="confirm">确定</string>
+    <string name="back">返回</string>
+    <string name="edit_diary">编辑日记</string>
+</resources>
