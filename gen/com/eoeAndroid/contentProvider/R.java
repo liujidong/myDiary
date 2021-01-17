@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.eoeAndroid.SQLite;
+package com.eoeAndroid.contentProvider;
 
 public final class R {
     public static final class attr {
@@ -28,13 +28,24 @@ public final class R {
         public static final int diary_row=0x7f030002;
     }
     public static final class string {
-        public static final int app_name=0x7f040000;
-        public static final int back=0x7f040006;
-        public static final int body=0x7f040004;
-        public static final int confirm=0x7f040005;
-        public static final int edit_diary=0x7f040007;
-        public static final int menu_delete=0x7f040002;
+        public static final int app_name=0x7f04000f;
+        public static final int back=0x7f04000e;
+        public static final int body=0x7f04000c;
+        public static final int button_ok=0x7f040010;
+        public static final int confirm=0x7f04000d;
+        public static final int error_message=0x7f040012;
+        public static final int error_title=0x7f040011;
+        public static final int menu_delete=0x7f040000;
+        public static final int menu_discard=0x7f040003;
         public static final int menu_insert=0x7f040001;
-        public static final int title=0x7f040003;
+        public static final int menu_revert=0x7f040002;
+        public static final int resolve_edit=0x7f040004;
+        public static final int resolve_title=0x7f040005;
+        public static final int title=0x7f04000b;
+        public static final int title_create=0x7f040006;
+        public static final int title_diares_list=0x7f040008;
+        public static final int title_diary=0x7f040009;
+        public static final int title_edit=0x7f040007;
+        public static final int title_edit_title=0x7f04000a;
     }
 }

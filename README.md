@@ -1,2 +1,2 @@
 # myDiary
-日记本
+Android日记本
