@@ -8,24 +8,24 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DiaryDbAdapter {
-	//private static final String TAG = "DiaryDbAdapter";
-
+	private static final String TAG = "DiaryDbAdapter";
+	
+	private static final String DATABASE_NAME = "database";
+	private static final int DATABASE_VERSION = 1;
+	private static final String DATABASE_TABLE = "diary";
+	public static final String KEY_ROWID = "_id";
 	public static final String KEY_TITLE = "title";
 	public static final String KEY_BODY = "body";
-	public static final String KEY_ROWID = "_id";
 	public static final String KEY_CREATED = "created";
 
 	private DatabaseHelper mDbHelper;//1
 	private SQLiteDatabase mDb;//2
 
-	private static final String DATABASE_CREATE = "create table diary (_id integer primary key autoincrement, "
-			+ "title text not null, body text not null, created text not null);";
-
-	private static final String DATABASE_NAME = "database";
-	private static final String DATABASE_TABLE = "diary";
-	private static final int DATABASE_VERSION = 1;
+	private static final String DATABASE_CREATE = "create table IF NOT EXISTS "+DATABASE_TABLE+" ("+KEY_ROWID+" integer primary key autoincrement, "
+			+ KEY_TITLE+" text not null, "+KEY_BODY+" text not null, "+KEY_CREATED+" text not null);";
 
 	private final Context mCtx;//3
 
@@ -38,12 +38,13 @@ public class DiaryDbAdapter {
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL(DATABASE_CREATE);
+			Log.i(TAG+":createDB=", DATABASE_CREATE);
 		}
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			db.execSQL("DROP TABLE IF EXISTS diary");
-			onCreate(db);
+			//db.execSQL("DROP TABLE IF EXISTS diary");
+			//onCreate(db);
 		}
 	}
 
@@ -106,11 +107,11 @@ public class DiaryDbAdapter {
 	}
 	private String getCreatedStr(){
 		Calendar calendar = Calendar.getInstance();
-		String created = calendar.get(Calendar.YEAR) + "Äê"
-				+ calendar.get(Calendar.MONTH) + "ÔÂ"
-				+ calendar.get(Calendar.DAY_OF_MONTH) + "ÈÕ"
-				+ calendar.get(Calendar.HOUR_OF_DAY) + "Ê±"
-				+ calendar.get(Calendar.MINUTE) + "·Ö";
+		String created = calendar.get(Calendar.YEAR) + "å¹´"
+				+ calendar.get(Calendar.MONTH) + "æœˆ"
+				+ calendar.get(Calendar.DAY_OF_MONTH) + "æ—¥"
+				+ calendar.get(Calendar.HOUR_OF_DAY) + "æ—¶"
+				+ calendar.get(Calendar.MINUTE) + "åˆ†";
 		return created;
 	}
 }

@@ -39,14 +39,13 @@ public class ActivityMain extends ListActivity {
 
 	private void renderListView() {
 		mDiaryCursor = mDbHelper.getAllNotes();
-		//½«cursor½»¸øActivity,×Ô¶¯ ½ÚÊ¡
+		//å°†ç”Ÿæˆçš„cursoräº¤ç»™Activityç®¡ç†,ä»¥èŠ‚çœç©ºé—´
 		startManagingCursor(mDiaryCursor);
-		//¶ÔÓ¦Êı¾İ¿â
+		//å–æ•°å¯¹åº”çš„åˆ—
 		String[] from = new String[] { DiaryDbAdapter.KEY_TITLE,
 				DiaryDbAdapter.KEY_CREATED };
-		//¶ÔÓ¦×é¼ş
+		//Viewæ•°ç»„ï¼Œåˆ—åç§°
 		int[] to = new int[] { R.id.text1, R.id.created };
-		//±ØĞëÓĞ¸ö_idµÄÁĞ
 		SimpleCursorAdapter notes = new SimpleCursorAdapter(this,
 				R.layout.diary_row, mDiaryCursor, from, to);
 		setListAdapter(notes);
@@ -66,14 +65,13 @@ public class ActivityMain extends ListActivity {
 			createDiary();
 			return true;
 		case DELETE_ID:
-			//¼üÅÌÉÏÏÂÒÆ¶¯
 			long rowId = getListView().getSelectedItemId();
 			Log.i(TAG, "rowId="+rowId);
 			if(rowId>0){
 				mDbHelper.deleteDiary(rowId);
-				renderListView();
+				renderListView();//é‡æ–°åˆ·æ–°ç•Œé¢
 			}else{
-				Toast.makeText(ActivityMain.this, "ÇëÑ¡ÖĞÒ»Ïî", Toast.LENGTH_LONG).show();
+				Toast.makeText(ActivityMain.this, "åˆ é™¤æˆåŠŸï¼", Toast.LENGTH_LONG).show();
 			}
 			return true;
 		}
@@ -86,9 +84,9 @@ public class ActivityMain extends ListActivity {
 	}
 
 	@Override
-	// ĞèÒª¶ÔpositionºÍid½øĞĞÒ»¸öºÜºÃµÄÇø·Ö
-	// positionÖ¸µÄÊÇµã»÷µÄÕâ¸öViewItemÔÚµ±Ç°ListViewÖĞµÄÎ»ÖÃ
-	// Ã¿Ò»¸öºÍViewItem°ó¶¨µÄÊı¾İ£¬¿Ï¶¨¶¼ÓĞÒ»¸öid£¬Í¨¹ıÕâ¸öid¿ÉÒÔÕÒµ½ÄÇÌõÊı¾İ¡£
+	// ï¿½ï¿½Òªï¿½ï¿½positionï¿½ï¿½idï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ÜºÃµï¿½ï¿½ï¿½ï¿½ï¿½
+	// positionÖ¸ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ViewItemï¿½Úµï¿½Ç°ListViewï¿½Ğµï¿½Î»ï¿½ï¿½
+	// Ã¿Ò»ï¿½ï¿½ï¿½ï¿½ViewItemï¿½ó¶¨µï¿½ï¿½ï¿½ï¿½İ£ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½idï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¡ï¿½
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
 		Cursor c = mDiaryCursor;
